@@ -19,7 +19,9 @@ function FormProyecto(props) {
     };
 
     const valorInicial = (props.modo!=="nuevo" ? {...props.proyecto} : proyectoLimpio);
-    const [ proyecto , setProyecto ] = useState(valorInicial);
+    //ERROR
+    //const { proyecto , setProyecto } = useState(valorInicial);
+    const [ proyecto , setProyecto ] = useState(valorInicial); 
     console.log(proyecto);
 
     //funcion para controlar el onchange de los inputs o elementos del form.
