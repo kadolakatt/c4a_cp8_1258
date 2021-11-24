@@ -18,13 +18,13 @@ function FormProyecto(props) {
         completado: false
     };
 
-    const valorInicial = (props.modo !=="nuevo" ? {...props.proyecto} : {...proyectoLimpio});
-    const { proyectoState , setProyecto } = useState({...valorInicial});
-    console.log(proyectoState);
+    const valorInicial = (props.modo!=="nuevo" ? {...props.proyecto} : proyectoLimpio);
+    const [ proyecto , setProyecto ] = useState(valorInicial);
+    console.log(proyecto);
 
     //funcion para controlar el onchange de los inputs o elementos del form.
     const onInputChange = function(e) {
-        const p = {...proyectoState};
+        const p = {...proyecto};
         p[e.target.name] = e.target.value;
         //Agregamos validaciones a nivel cambio de cada input
         setProyecto(p);
@@ -32,7 +32,7 @@ function FormProyecto(props) {
     const onFormSubmit = function(e) {
         e.preventDefault();
         //Agregamos validaciones a nivel de formulario
-        props.onGuardar(proyectoState);
+        props.onGuardar(proyecto);
         //Codigo para renderizar mensaje de exito o fracaso.
         setProyecto(proyectoLimpio);
     }
@@ -42,7 +42,7 @@ function FormProyecto(props) {
             <div className="form-group">
                 <label className="control-label" htmlFor="Id" >Id</label>
                 <input className="form-control" type="number" 
-                       name="id" value={proyectoState.id} onChange={ onInputChange } />
+                       name="id" value={proyecto.id} onChange={ onInputChange } />
             </div>
             <div className="form-group">
                 <label className="control-label">Nombre</label>
